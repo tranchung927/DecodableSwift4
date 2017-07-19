@@ -1,0 +1,38 @@
+{
+   "location":{
+      "name":"Paris",
+      "region":"Ile-de-France",
+      "country":"France",
+      "lat":48.87,
+      "lon":2.33,
+      "tz_id":"Europe/Paris",
+      "localtime_epoch":1500454314,
+      "localtime":"2017-07-19 10:51"
+   },
+   "current":{
+      "last_updated_epoch":1500453910,
+      "last_updated":"2017-07-19 10:45",
+      "temp_c":25.0,
+      "temp_f":77.0,
+      "is_day":1,
+      "condition":{
+         "text":"Patchy light rain with thunder",
+         "icon":"//cdn.apixu.com/weather/64x64/day/386.png",
+         "code":1273
+      },
+      "wind_mph":5.6,
+      "wind_kph":9.0,
+      "wind_degree":190,
+      "wind_dir":"S",
+      "pressure_mb":1010.0,
+      "pressure_in":30.3,
+      "precip_mm":0.1,
+      "precip_in":0.0,
+      "humidity":54,
+      "cloud":75,
+      "feelslike_c":26.0,
+      "feelslike_f":78.8,
+      "vis_km":10.0,
+      "vis_miles":6.0
+   }
+}
