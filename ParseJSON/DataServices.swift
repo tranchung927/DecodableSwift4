@@ -10,15 +10,21 @@ import UIKit
 let notificationJSON = Notification.Name.init("notificationJSON")
 class DataServices {
     static let shared: DataServices = DataServices()
-    
+    private var _weatherCurrent: Weather?
     var weatherCurrent: Weather? {
-        didSet {
-            updateData()
+        get {
+            if _weatherCurrent == nil {
+                updateData()
+            }
+            return _weatherCurrent
+        }
+        set {
+            _weatherCurrent = newValue
         }
     }
     
     func updateData() {
-        let urlString = "https://api.apixu.com/v1/current.json?key=f3d902b438a3451c92605731171906&q=Paris"
+        let urlString = "https://api.apixu.com/v1/current.json?key=719891bd775c4b8fb3510302172007&q=Paris"
         guard let url = URL(string: urlString) else {return}
         requestAPI(request: url)
     }
@@ -27,8 +33,7 @@ class DataServices {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {return}
             do {
-                let json = try JSONDecoder().decode(Weather.self, from: data)
-                self.weatherCurrent = json
+                self.weatherCurrent = try JSONDecoder().decode(Weather.self, from: data)
                 NotificationCenter.default.post(name: notificationJSON, object: nil)
                 
             } catch let error {

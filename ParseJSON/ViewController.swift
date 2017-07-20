@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var weather: Weather?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +19,10 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateWeather), name: notificationJSON, object: nil)
     }
     @objc func updateWeather() {
-        self.weather = DataServices.shared.weatherCurrent
-        guard let weatherSet = weather else {return}
-        print("Name: \(weatherSet.location.name)\nCountry: \(weatherSet.location.country)\nIcon: http:\(weatherSet.current.condition.icon)")
+        guard let weather = DataServices.shared.weatherCurrent else {return}
+        print("Name: \(weather.location.name)\nCountry: \(weather.location.country)\nIcon: http:\(weather.current.condition.icon)")
+    }
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
 }
